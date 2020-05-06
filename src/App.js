@@ -1,26 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import YTContainer from './YTContainer'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor () {
+    super();
+    
+    this.state = {
+      name: "App",
+      showYTContainer: false
+    }
+    
+    this.showPlayer = this.showPlayer.bind(this);
+  }  
+
+  showPlayer(name) {
+    console.log(name);
+    switch (name) {
+      case "showYTContainer":
+        this.setState({ showYTContainer: true});
+        break;
+      default:
+        break;
+    }
+  }
+
+  render() {
+    const {showYTContainer} = this.state;  
+    document.title = 'third block';
+    return (
+      <div>
+        {showYTContainer && <YTContainer />}
+        <div className="App-button">
+          <button className="App-button2" onClick={() => this.showPlayer("showYTContainer")}>
+              welcome to third block.
+          </button>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
