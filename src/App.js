@@ -26,7 +26,6 @@ class App extends React.Component {
 
   render() {
     const {showYTContainer} = this.state;  
-    document.title = 'third block';
     return (
       <div>
         {showYTContainer && <YTContainer />}
